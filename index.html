@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Festival Raízes Originárias — Raízes que contam quem somos</title>
+<meta name="description" content="Festival Raízes Originárias: filmes, capacitações em artes e eventos que dão voz e protagonismo às comunidades indígenas, ciganas e quilombolas do Brasil.">
+<meta name="theme-color" content="#381c0f">
+<script>document.documentElement.className+=" js";</script>
+<link rel="canonical" href="https://festivalraizesoriginarias.com.br/">
+
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Festival Raízes Originárias">
+<meta property="og:description" content="Filmes, capacitações em artes e eventos que dão voz e protagonismo às comunidades indígenas, ciganas e quilombolas do Brasil.">
+<meta property="og:url" content="https://festivalraizesoriginarias.com.br/">
+<meta property="og:image" content="https://festivalraizesoriginarias.com.br/assets/img/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<style>
+/* ============================================================
+   TOKENS — paleta oficial (Prancheta_paleta_cores.png)
+   ============================================================ */
+:root{
+  --marrom:#381c0f;
+  --vermelho:#770706;
+  --amarelo:#f6b20a;
+  --verde:#00a18e;
+  --branco:#ffffff;
+
+  --fonte: "Helvetica Neue", Helvetica, Arial, "Liberation Sans", system-ui, sans-serif;
+
+  --max: 1160px;
+  --gutter: clamp(1.25rem, 5vw, 4rem);
+  --secao: clamp(4.5rem, 10vw, 8rem);
+  --faixa-h: clamp(48px, 8vw, 92px);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth; -webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *{animation-duration:.001ms !important; transition-duration:.001ms !important}
+}
+body{
+  margin:0;
+  font-family:var(--fonte);
+  background:var(--branco);
+  color:var(--marrom);
+  font-size:clamp(1rem, .96rem + .25vw, 1.125rem);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%; height:auto; display:block}
+a{color:inherit}
+
+:focus-visible{
+  outline:3px solid var(--amarelo);
+  outline-offset:3px;
+  border-radius:2px;
+}
+
+.container{width:100%; max-width:var(--max); margin-inline:auto; padding-inline:var(--gutter)}
+.sr-only{
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;
+}
+.pular{
+  position:absolute; left:var(--gutter); top:-100px; z-index:1000;
+  background:var(--amarelo); color:var(--marrom); font-weight:700;
+  padding:.75rem 1.1rem; border-radius:4px; transition:top .2s ease;
+}
+.pular:focus{top:.75rem}
+
+/* ============================================================
+   TIPOGRAFIA
+   ============================================================ */
+h1,h2,h3{margin:0; line-height:1.05; letter-spacing:-.02em; font-weight:700}
+h2{font-size:clamp(2rem, 1.3rem + 3.2vw, 3.6rem)}
+h3{font-size:clamp(1.25rem, 1.1rem + .7vw, 1.6rem); letter-spacing:-.01em}
+p{margin:0 0 1.1em}
+p:last-child{margin-bottom:0}
+
+.olho{
+  display:inline-block;
+  font-size:clamp(.7rem,.66rem + .18vw,.8rem);
+  text-transform:uppercase;
+  letter-spacing:.22em;
+  font-weight:700;
+  margin-bottom:1.25rem;
+}
+.lead{font-size:clamp(1.1rem, 1rem + .5vw, 1.35rem); line-height:1.55}
+
+/* ============================================================
+   BOTÕES
+   ============================================================ */
+.btn{
+  display:inline-block;
+  font:inherit; font-weight:700;
+  font-size:clamp(.9rem,.86rem + .2vw,1rem);
+  letter-spacing:.02em;
+  padding:.95rem 1.6rem;
+  border-radius:999px;
+  text-decoration:none;
+  border:2px solid transparent;
+  transition:transform .18s ease, background-color .18s ease, color .18s ease;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn--amarelo{background:var(--amarelo); color:var(--marrom)}
+.btn--amarelo:hover{background:var(--branco)}
+.btn--contorno{border-color:currentColor; color:var(--branco)}
+.btn--contorno:hover{background:var(--branco); color:var(--marrom); border-color:var(--branco)}
+.btn--marrom{background:var(--marrom); color:var(--branco)}
+.btn--marrom:hover{background:var(--vermelho)}
+
+/* ============================================================
+   CABEÇALHO
+   ============================================================ */
+.topo{
+  position:sticky; top:0; z-index:100;
+  background:var(--marrom);
+  border-bottom:1px solid rgba(255,255,255,.14);
+}
+.topo__inner{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:1rem; min-height:70px;
+}
+.marca{display:flex; align-items:center; gap:.7rem; text-decoration:none; color:var(--branco)}
+.marca img{width:38px}
+.marca span{
+  font-size:.72rem; font-weight:700; text-transform:uppercase;
+  letter-spacing:.16em; line-height:1.25; max-width:9.5em;
+}
+.menu{display:flex; align-items:center; gap:clamp(1rem,2.4vw,2.2rem); list-style:none; margin:0; padding:0}
+.menu a{
+  color:var(--branco); text-decoration:none; font-weight:700;
+  font-size:.8rem; text-transform:uppercase; letter-spacing:.14em;
+  padding:.4rem 0; border-bottom:2px solid transparent;
+}
+.menu a:hover{border-bottom-color:var(--amarelo)}
+.menu-btn{
+  display:none; background:none; border:2px solid rgba(255,255,255,.4);
+  color:var(--branco); border-radius:6px; padding:.5rem .7rem; cursor:pointer;
+}
+.menu-btn svg{display:block}
+
+@media (max-width:820px){
+  .menu-btn{display:block}
+  .menu{
+    position:absolute; inset:100% 0 auto 0;
+    flex-direction:column; align-items:flex-start; gap:0;
+    background:var(--marrom);
+    border-bottom:3px solid var(--amarelo);
+    padding:.5rem var(--gutter) 1.25rem;
+  }
+  .menu[hidden]{display:none}
+  .menu a{display:block; width:100%; padding:.85rem 0; border-bottom:1px solid rgba(255,255,255,.12)}
+  .menu li:last-child a{border-bottom:none}
+}
+
+/* ============================================================
+   GRAFISMO — faixas e texturas
+   ============================================================ */
+.faixa{
+  height:var(--faixa-h);
+  background-repeat:repeat-x;
+  background-size:auto 100%;
+  background-position:center;
+}
+.faixa--amarela{background-color:var(--marrom); background-image:url("assets/img/faixa-amarela.png")}
+.faixa--vermelha{background-color:var(--branco); background-image:url("assets/img/faixa-vermelha.png")}
+.faixa--verde{background-color:var(--branco); background-image:url("assets/img/faixa-verde.png")}
+.faixa--branca{background-color:var(--vermelho); background-image:url("assets/img/faixa-branca.png")}
+.faixa--marrom{background-color:var(--branco); background-image:url("assets/img/faixa-marrom.png")}
+
+.textura{
+  position:absolute; pointer-events:none; user-select:none;
+  background-repeat:no-repeat; background-size:cover;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  position:relative; overflow:hidden;
+  background:var(--marrom); color:var(--branco);
+  padding:clamp(3rem,7vw,5.5rem) 0 clamp(3.5rem,8vw,6rem);
+  text-align:center;
+}
+.hero::before{
+  content:""; position:absolute; inset:0;
+  background:url("assets/img/textura-amarela.png") center/ 60% auto repeat;
+  opacity:.10;
+}
+.hero .container{position:relative}
+.hero__logo{width:min(430px, 78vw); margin:0 auto}
+.hero h1{margin:0}
+.hero p{
+  max-width:36ch; margin:2rem auto 2.5rem;
+  font-size:clamp(1.05rem, .98rem + .5vw, 1.3rem);
+  line-height:1.55; color:rgba(255,255,255,.9);
+}
+.hero__acoes{display:flex; flex-wrap:wrap; gap:.9rem; justify-content:center}
+
+/* ============================================================
+   SEÇÕES
+   ============================================================ */
+.secao{padding-block:var(--secao); position:relative; overflow:hidden}
+.secao--clara{background:var(--branco); color:var(--marrom)}
+.secao--escura{background:var(--marrom); color:var(--branco)}
+.secao--vermelha{background:var(--vermelho); color:var(--branco)}
+.secao .container{position:relative; z-index:1}
+
+.dupla{display:grid; gap:clamp(1.75rem,4vw,3.5rem); grid-template-columns:1fr}
+@media (min-width:900px){ .dupla{grid-template-columns:0.85fr 1.15fr; align-items:start} }
+
+.sobre__textura{
+  top:-6%; right:-14%; width:min(460px,52vw); height:120%;
+  background-image:url("assets/img/textura-marrom.png");
+  opacity:.07;
+}
+.regua{width:64px; height:6px; background:var(--vermelho); margin:1.5rem 0 0; border-radius:3px}
+
+/* Cards — o que realizamos */
+.cards{display:grid; gap:clamp(1rem,2.5vw,1.75rem); grid-template-columns:1fr; margin-top:clamp(2.5rem,5vw,3.5rem)}
+@media (min-width:760px){ .cards{grid-template-columns:repeat(3,1fr)} }
+.card{
+  position:relative; overflow:hidden;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.18);
+  border-top:6px solid var(--amarelo);
+  border-radius:14px;
+  padding:clamp(1.5rem,3vw,2.1rem);
+}
+.card:nth-child(2){border-top-color:var(--verde)}
+.card:nth-child(3){border-top-color:var(--vermelho)}
+.card h3{margin-bottom:.7rem}
+.card p{color:rgba(255,255,255,.86); font-size:.98rem}
+.card__grafismo{
+  position:absolute; right:-30%; bottom:-25%; width:78%; height:78%;
+  background:url("assets/img/textura-branca.png") center/cover no-repeat;
+  opacity:.08; pointer-events:none;
+}
+
+/* Povos */
+.povos{display:grid; gap:clamp(1rem,2.5vw,1.5rem); grid-template-columns:1fr; margin-top:clamp(2.5rem,5vw,3.5rem)}
+@media (min-width:760px){ .povos{grid-template-columns:repeat(3,1fr)} }
+.povo{
+  position:relative; overflow:hidden;
+  border-radius:14px;
+  padding:clamp(1.6rem,3vw,2.2rem);
+  min-height:210px;
+  display:flex; flex-direction:column; justify-content:flex-end;
+}
+.povo h3{margin-bottom:.5rem}
+.povo p{font-size:.98rem; margin:0}
+.povo--verde{background:var(--verde); color:var(--marrom)}
+.povo--amarelo{background:var(--amarelo); color:var(--marrom)}
+.povo--vermelho{background:var(--vermelho); color:var(--branco)}
+.povo__grafismo{
+  position:absolute; inset:0;
+  background-position:center; background-size:150% auto; background-repeat:no-repeat;
+  opacity:.14; pointer-events:none;
+}
+.povo--verde .povo__grafismo,
+.povo--amarelo .povo__grafismo{background-image:url("assets/img/textura-marrom.png")}
+.povo--vermelho .povo__grafismo{background-image:url("assets/img/textura-branca.png")}
+
+/* Manifesto */
+.manifesto{text-align:center}
+.manifesto::before{
+  content:""; position:absolute; inset:0;
+  background:url("assets/img/textura-branca.png") center/ 55% auto repeat;
+  opacity:.09;
+}
+.manifesto blockquote{
+  margin:0 auto; max-width:20ch;
+  font-size:clamp(2rem,1.2rem + 4vw, 4.2rem);
+  line-height:1.02; letter-spacing:-.03em; font-weight:700;
+}
+.manifesto cite{
+  display:block; margin-top:1.75rem; font-style:normal;
+  text-transform:uppercase; letter-spacing:.2em; font-size:.75rem; font-weight:700;
+  color:rgba(255,255,255,.75);
+}
+
+/* Contato */
+.contato__grid{display:grid; gap:clamp(1.75rem,4vw,3rem); grid-template-columns:1fr; align-items:center}
+@media (min-width:900px){ .contato__grid{grid-template-columns:1fr 1fr} }
+.contato__icone{width:min(240px,44vw); margin-inline:auto}
+.contatos{list-style:none; margin:2rem 0 0; padding:0; display:grid; gap:1rem}
+.contatos a{font-weight:700; text-decoration:none; border-bottom:2px solid var(--amarelo); word-break:break-word}
+.contatos a:hover{background:var(--amarelo)}
+.contatos span{display:block; font-size:.72rem; text-transform:uppercase; letter-spacing:.18em; opacity:.7; margin-bottom:.2rem}
+
+/* Rodapé */
+.rodape{background:var(--marrom); color:var(--branco); padding-block:clamp(2.5rem,5vw,3.5rem); text-align:center}
+.rodape img{width:64px; margin:0 auto 1.25rem}
+.rodape p{font-size:.85rem; color:rgba(255,255,255,.68); max-width:46ch; margin-inline:auto}
+
+/* Animação de entrada */
+.js .revela{opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s ease}
+.js .revela.visivel{opacity:1; transform:none}
+@media (prefers-reduced-motion: reduce){ .js .revela{opacity:1; transform:none} }
+</style>
+</head>
+<body>
+
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="topo">
+  <div class="container topo__inner">
+    <a class="marca" href="#topo">
+      <img src="assets/img/icone-branco.png" alt="" width="38" height="48">
+      <span>Festival Raízes Originárias</span>
+    </a>
+
+    <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
+      <svg width="22" height="16" viewBox="0 0 22 16" fill="none" aria-hidden="true">
+        <path d="M0 1h22M0 8h22M0 15h22" stroke="currentColor" stroke-width="2"/>
+      </svg>
+    </button>
+
+    <nav aria-label="Navegação principal">
+      <ul class="menu" id="menu">
+        <li><a href="#festival">O festival</a></li>
+        <li><a href="#realizacoes">O que fazemos</a></li>
+        <li><a href="#povos">Quem celebramos</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+
+  <!-- HERO -->
+  <section class="hero" id="topo">
+    <div class="container">
+      <h1>
+        <img class="hero__logo" src="assets/img/logo-vertical-branco.png"
+             alt="Festival Raízes Originárias — raízes que contam quem somos"
+             width="760" height="863" fetchpriority="high">
+      </h1>
+      <p>Cinema, arte e memória dos povos que formam a essência cultural do Brasil.</p>
+      <div class="hero__acoes">
+        <a class="btn btn--amarelo" href="#festival">Conheça o festival</a>
+        <a class="btn btn--contorno" href="#contato">Fale com a gente</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="faixa faixa--amarela" role="presentation"></div>
+
+  <!-- O FESTIVAL -->
+  <section class="secao secao--clara" id="festival">
+    <div class="textura sobre__textura" aria-hidden="true"></div>
+    <div class="container dupla revela">
+      <div>
+        <span class="olho" style="color:var(--vermelho)">O festival</span>
+        <h2>Raízes que<br>contam quem somos</h2>
+        <div class="regua"></div>
+      </div>
+      <div>
+        <p class="lead">O Festival Raízes Originárias nasce com o propósito de dar voz, visibilidade e protagonismo aos povos que formam a essência cultural do Brasil.</p>
+        <p>Dedicado às comunidades indígenas, ciganas e quilombolas, o projeto atua por meio da produção de filmes, capacitações em artes e realização de eventos, promovendo a valorização de saberes ancestrais e a preservação de identidades.</p>
+        <p>Mais do que um festival, é um movimento que conecta tradição e contemporaneidade, fortalecendo histórias, talentos e narrativas que precisam ser vistas, ouvidas e respeitadas.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="faixa faixa--vermelha" role="presentation"></div>
+
+  <!-- O QUE FAZEMOS -->
+  <section class="secao secao--escura" id="realizacoes">
+    <div class="container">
+      <div class="revela" style="max-width:34ch">
+        <span class="olho" style="color:var(--amarelo)">O que fazemos</span>
+        <h2>Três frentes,<br>uma mesma raiz</h2>
+      </div>
+
+      <div class="cards">
+        <article class="card revela">
+          <div class="card__grafismo" aria-hidden="true"></div>
+          <h3>Filmes</h3>
+          <p>Produção audiovisual feita com as comunidades, registrando histórias contadas por quem as viveu.</p>
+        </article>
+        <article class="card revela">
+          <div class="card__grafismo" aria-hidden="true"></div>
+          <h3>Capacitações em artes</h3>
+          <p>Oficinas e formações que colocam as ferramentas de criação nas mãos de quem carrega a tradição.</p>
+        </article>
+        <article class="card revela">
+          <div class="card__grafismo" aria-hidden="true"></div>
+          <h3>Eventos</h3>
+          <p>Mostras, rodas e encontros que aproximam público, artistas e saberes ancestrais.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="faixa faixa--verde" role="presentation"></div>
+
+  <!-- QUEM CELEBRAMOS -->
+  <section class="secao secao--clara" id="povos">
+    <div class="container">
+      <div class="revela" style="max-width:36ch">
+        <span class="olho" style="color:var(--verde)">Quem celebramos</span>
+        <h2>Povos que fazem<br>o Brasil ser Brasil</h2>
+      </div>
+
+      <div class="povos">
+        <article class="povo povo--verde revela">
+          <div class="povo__grafismo" aria-hidden="true"></div>
+          <h3>Povos indígenas</h3>
+          <p>Línguas, grafismos, cantos e modos de viver que antecedem o país e seguem vivos nele.</p>
+        </article>
+        <article class="povo povo--vermelho revela">
+          <div class="povo__grafismo" aria-hidden="true"></div>
+          <h3>Comunidades ciganas</h3>
+          <p>Música, dança e uma cultura de travessia que atravessa gerações sem perder a origem.</p>
+        </article>
+        <article class="povo povo--amarelo revela">
+          <div class="povo__grafismo" aria-hidden="true"></div>
+          <h3>Comunidades quilombolas</h3>
+          <p>Territórios, tambores e memórias de resistência que sustentam a identidade brasileira.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- MANIFESTO -->
+  <section class="secao secao--vermelha manifesto">
+    <div class="container revela">
+      <blockquote>Histórias que precisam ser vistas, ouvidas e respeitadas.</blockquote>
+      <cite>Festival Raízes Originárias</cite>
+    </div>
+  </section>
+
+  <div class="faixa faixa--branca" role="presentation"></div>
+
+  <!-- CONTATO -->
+  <section class="secao secao--clara" id="contato">
+    <div class="container contato__grid revela">
+      <div>
+        <span class="olho" style="color:var(--vermelho)">Contato</span>
+        <h2>Vamos construir<br>essa história juntos</h2>
+        <p style="margin-top:1.5rem; max-width:44ch">Comunidades, realizadores, escolas, patrocinadores e parceiros: escreva para a gente e conte como você quer participar.</p>
+
+        <ul class="contatos">
+          <li>
+            <span>E-mail</span>
+            <a href="mailto:contato@festivalraizesoriginarias.com.br">contato@festivalraizesoriginarias.com.br</a>
+          </li>
+          <li>
+            <span>Instagram</span>
+            <a href="https://instagram.com/festivalraizesoriginarias" rel="noopener">@festivalraizesoriginarias</a>
+          </li>
+        </ul>
+
+        <p style="margin-top:2rem">
+          <a class="btn btn--marrom" href="mailto:contato@festivalraizesoriginarias.com.br">Enviar mensagem</a>
+        </p>
+      </div>
+      <div>
+        <img class="contato__icone" src="assets/img/icone-marrom.png" alt="" width="557" height="700" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="rodape">
+  <div class="container">
+    <img src="assets/img/icone-branco.png" alt="" width="64" height="80" loading="lazy">
+    <p>Festival Raízes Originárias — raízes que contam quem somos.<br>© <span id="ano">2026</span> Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Menu mobile
+  var btn = document.getElementById('menu-btn');
+  var menu = document.getElementById('menu');
+  function fechar(){ btn.setAttribute('aria-expanded','false'); btn.setAttribute('aria-label','Abrir menu'); if(mobile()) menu.hidden = true; }
+  function mobile(){ return window.matchMedia('(max-width:820px)').matches; }
+  function sincronizar(){ menu.hidden = mobile() && btn.getAttribute('aria-expanded') !== 'true'; }
+
+  btn.addEventListener('click', function(){
+    var aberto = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!aberto));
+    btn.setAttribute('aria-label', aberto ? 'Abrir menu' : 'Fechar menu');
+    menu.hidden = aberto;
+  });
+  menu.addEventListener('click', function(e){ if(e.target.tagName === 'A') fechar(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') fechar(); });
+  window.addEventListener('resize', sincronizar);
+  sincronizar();
+
+  // Revelação ao rolar
+  var alvos = document.querySelectorAll('.revela');
+  if(!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    alvos.forEach(function(el){ el.classList.add('visivel'); });
+  } else {
+    var obs = new IntersectionObserver(function(entradas){
+      entradas.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('visivel'); obs.unobserve(en.target); }
+      });
+    }, { threshold:.12, rootMargin:'0px 0px -8% 0px' });
+    alvos.forEach(function(el){ obs.observe(el); });
+  }
+
+  document.getElementById('ano').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
